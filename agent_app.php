@@ -1,13 +1,23 @@
 <?php 
 
-require_once('vendor/twilio/sdk/Services/Twilio/Capability.php');
+/*
+ * SETUP environment vars application in Heroku
+ * heroku config:set SID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+ * heroku config:set TOKEN=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+ * heroku config:set APPSID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+ * heroku config:set SOCKETIO_HOST=verbery-queue-for-twilio-nodejs.heroku.com
+ * 
+ */
+
+// require_once('vendor/twilio/sdk/Services/Twilio/Capability.php');
+require('../vendor/autoload.php');
 
 // put your Twilio API credentials here
-$accountSid = '';
-$authToken  = '';
+$accountSid = getenv('SID');
+$authToken  = getenv('TOKEN');
 
 // put your Twilio Application Sid here
-$appSid	 = '';
+$appSid	 = getenv('APPSID');
 
 // get agent id from the address line
 if(isset($_GET['agent'])) {
@@ -41,7 +51,7 @@ $token = $capability->generateToken();
 
 	<script type="text/javascript" src="https://static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
 
-	<script src="http://127.0.0.1:8080/socket.io/socket.io.js"></script>
+	<script src="http://<?php echo getenv('SOCKETIO_HOST'); ?>/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
 
 		var connection = null;										// store Twilio connection 
@@ -61,7 +71,7 @@ $token = $capability->generateToken();
 		/* ********************************************************************
 		 * connect to the nodejs socket.io
 		 */
-		var socket = io.connect('http://127.0.0.1:8080');
+		var socket = io.connect('http://<?php echo getenv('SOCKETIO_HOST'); ?>');
 
 
 
