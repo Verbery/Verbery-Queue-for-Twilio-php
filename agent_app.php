@@ -10,7 +10,7 @@
  */
 
 // require_once('vendor/twilio/sdk/Services/Twilio/Capability.php');
-require('../vendor/autoload.php');
+require('vendor/autoload.php');
 
 // put your Twilio API credentials here
 $accountSid = getenv('SID');
