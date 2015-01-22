@@ -16,7 +16,7 @@ require ('vendor/autoload.php');
  * notify nodejs Queue Manager about the incoming call in the queue so the agent
  * with longest idle time can pickup the call
  */
-$host = 'https://' + getenv('SOCKETIO_HOST');
+$host = 'https://' . getenv('SOCKETIO_HOST');
 $client = new Client(
 					new Version1X($host));
 
