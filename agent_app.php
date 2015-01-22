@@ -51,7 +51,7 @@ $token = $capability->generateToken();
 
 	<script type="text/javascript" src="https://static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
 
-	<script src="http://verbery-queue-for-twilio-node.herokuapp.com/socket.io/socket.io.js"></script>
+	<script src="https://verbery-queue-for-twilio-node.herokuapp.com/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
 
 		var connection = null;										// store Twilio connection 
@@ -71,7 +71,7 @@ $token = $capability->generateToken();
 		/* ********************************************************************
 		 * connect to the nodejs socket.io
 		 */
-		var socket = io.connect('http://verbery-queue-for-twilio-node.herokuapp.com');
+		var socket = io.connect('https://verbery-queue-for-twilio-node.herokuapp.com');
 
 
 
