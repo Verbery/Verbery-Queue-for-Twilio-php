@@ -12,13 +12,10 @@ $name = "Queue Demo"; // queue name
 // with message that there is a new call $callID in the queue $queueID
 // notifyNodeJS($name);
 ////////////////////////////////////////////////////////////////////////////////////////
-require_once('/home/ubuntu/Downloads/Queue.Verbery/www/vendor/wisembly/elephant.io/src/Client.php');
+require('vendor/wisembly/elephant.io/src/Client.php');
 use ElephantIO\Client as Elephant;
 
-$elephant = new Elephant('http://127.0.0.1:8080', 'socket.io', 1, true, true, true);
-// $elephant = new Elephant('http://www.verbery.com:8080', 'socket.io', 1, false, true, true);
-// $elephant = new Elephant('http://localhost:8080', 'socket.io', 1, false, true, true);
-
+$elephant = new Elephant('http://'+getenv('SOCKETIO_HOST');, 'socket.io', 1, true, true, true);
 
 $elephant->init();
 $elephant->emit('from master, new call in queue', $name);

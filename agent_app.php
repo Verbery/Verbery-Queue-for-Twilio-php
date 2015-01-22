@@ -1,7 +1,5 @@
 <?php 
 
-header('Access-Control-Allow-Origin: *');
-
 /*
  * SETUP environment vars application in Heroku
  * heroku config:set SID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
@@ -53,7 +51,7 @@ $token = $capability->generateToken();
 
 	<script type="text/javascript" src="https://static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
 
-	<script src="http://<?php echo getenv('SOCKETIO_HOST'); ?>/socket.io/socket.io.js"></script>
+	<script src="http://verbery-queue-for-twilio-node.herokuapp.com/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
 
 		var connection = null;										// store Twilio connection 
@@ -73,7 +71,7 @@ $token = $capability->generateToken();
 		/* ********************************************************************
 		 * connect to the nodejs socket.io
 		 */
-		var socket = io.connect('http://<?php echo getenv('SOCKETIO_HOST'); ?>');
+		var socket = io.connect('http://verbery-queue-for-twilio-node.herokuapp.com');
 
 
 
