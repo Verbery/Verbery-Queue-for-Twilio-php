@@ -34,7 +34,9 @@ body {
   /* IE hacks */
   zoom: 1;
   *display: inline;
-  overflow: hidden;
+  overflow-x: hidden;
+	overflow-y: scroll;
+	white-space: pre;
 }
 
 #buttons {
