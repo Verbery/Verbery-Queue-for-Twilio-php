@@ -13,20 +13,29 @@ $name = "Queue Demo"; // queue name
 // notifyNodeJS($name);
 ////////////////////////////////////////////////////////////////////////////////////////
 // require('vendor/wisembly/elephant.io/src/Client.php');
+
+// use ElephantIO\Client as Elephant;
+use ElephantIO\Client,
+		ElephantIO\Engine\SocketIO\Version1X;
+
 require('vendor/autoload.php');
-use ElephantIO\Client as Elephant;
 
-$elephant = new Elephant('http://verbery-queue-for-twilio-node.herokuapp.com', 'socket.io', 1, true, true, true);
+// $elephant = new Elephant('http://verbery-queue-for-twilio-node.herokuapp.com', 'socket.io', 1, true, true, true);
+$client = new Client(new Version1X('http://verbery-queue-for-twilio-node.herokuapp.com'));
 
-$elephant->init();
-$elephant->emit('from master, new call in queue', $name);
+$client->initialize();
+$client->emit('from master, new call in queue', $name);
+$client->close();
+
+// $elephant->init();
+// $elephant->emit('from master, new call in queue', $name);
 // 	$elephant->send(
 // 			ElephantIOClient::TYPE_EVENT,
 // 			null,
 // 			null,
 // 			json_encode(array('callID' => $cid, 'queueID' => $name))
 // 	);
-$elephant->close();
+// $elephant->close();
 //////////////////////////////////////////////////////////////////////////////////////////
 // Implementation on ElephantIO 3.0.0
 /////////////////////////////////////
