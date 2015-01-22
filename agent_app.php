@@ -8,12 +8,8 @@
  * heroku config:set TWILIO_TOKEN=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
  * heroku config:set TWILIO_APPSID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
  * 
- * REDIS server host and port
- * heroku config:set REDIS_HOST=verbery.com
- * heroku config:set REDIS_PORT=6379
- * 
  * Nodejs server (Socket.io) host
- * heroku config:set SOCKETIO_HOST=verbery-queue-for-twilio-node.herokuapp.com
+ * heroku config:set SOCKETIO_HOST=my-queue-node.herokuapp.com
  */
 
 require('vendor/autoload.php');
@@ -108,6 +104,7 @@ $token = $capability->generateToken();
 
 		Twilio.Device.error(function (error) {
 			$("#log").append("\nError: " + error.message);
+			console.log(error.message);
 			isOnline = false;
 			$("#nav-btn-state").text(Twilio.Device.status());
 		});
