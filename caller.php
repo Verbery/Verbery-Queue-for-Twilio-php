@@ -15,7 +15,7 @@ $name = "Queue Demo"; // queue name
 require('vendor/wisembly/elephant.io/src/Client.php');
 use ElephantIO\Client as Elephant;
 
-$elephant = new Elephant('http://verbery-queue-for-twilio-node.herokuapp.com/socket.io', 1, true, true, true);
+$elephant = new Elephant('http://verbery-queue-for-twilio-node.herokuapp.com', 'socket.io', 1, true, true, true);
 
 $elephant->init();
 $elephant->emit('from master, new call in queue', $name);
