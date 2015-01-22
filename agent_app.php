@@ -1,23 +1,29 @@
 <?php 
 
 /*
- * SETUP environment vars application in Heroku
- * heroku config:set SID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
- * heroku config:set TOKEN=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
- * heroku config:set APPSID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
- * heroku config:set SOCKETIO_HOST=verbery-queue-for-twilio-node.herokuapp.com
+ * SETUP environment vars for application in Heroku
+ *
+ * Twilio SID and TOKEN can be found here: https://www.twilio.com/user/account/
+ * heroku config:set TWILIO_SID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+ * heroku config:set TWILIO_TOKEN=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+ * heroku config:set TWILIO_APPSID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
  * 
+ * REDIS server host and port
+ * heroku config:set REDIS_HOST=verbery.com
+ * heroku config:set REDIS_PORT=6379
+ * 
+ * Nodejs server (Socket.io) host
+ * heroku config:set SOCKETIO_HOST=verbery-queue-for-twilio-node.herokuapp.com
  */
 
-// require_once('vendor/twilio/sdk/Services/Twilio/Capability.php');
 require('vendor/autoload.php');
 
 // put your Twilio API credentials here
-$accountSid = getenv('SID');
-$authToken  = getenv('TOKEN');
+$accountSid = getenv('TWILIO_SID');
+$authToken  = getenv('TWILIO_TOKEN');
 
 // put your Twilio Application Sid here
-$appSid	 = getenv('APPSID');
+$appSid	 = getenv('TWILIO_APPSID');
 
 // get agent id from the address line
 if(isset($_GET['agent'])) {
