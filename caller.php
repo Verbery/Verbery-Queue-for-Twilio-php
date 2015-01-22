@@ -12,7 +12,8 @@ $name = "Queue Demo"; // queue name
 // with message that there is a new call $callID in the queue $queueID
 // notifyNodeJS($name);
 ////////////////////////////////////////////////////////////////////////////////////////
-require('vendor/wisembly/elephant.io/src/Client.php');
+// require('vendor/wisembly/elephant.io/src/Client.php');
+require('vendor/autoload.php');
 use ElephantIO\Client as Elephant;
 
 $elephant = new Elephant('http://verbery-queue-for-twilio-node.herokuapp.com', 'socket.io', 1, true, true, true);
