@@ -5,7 +5,7 @@
  * heroku config:set SID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
  * heroku config:set TOKEN=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
  * heroku config:set APPSID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
- * heroku config:set SOCKETIO_HOST=verbery-queue-for-twilio-nodejs.heroku.com
+ * heroku config:set SOCKETIO_HOST=verbery-queue-for-twilio-node.herokuapp.com
  * 
  */
 
@@ -51,7 +51,7 @@ $token = $capability->generateToken();
 
 	<script type="text/javascript" src="https://static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
 
-	<script src="https://verbery-queue-for-twilio-node.herokuapp.com/socket.io/socket.io.js"></script>
+	<script src="https://<?php echo getenv('SOCKETIO_HOST'); ?>/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
 
 		var connection = null;										// store Twilio connection 
@@ -71,7 +71,7 @@ $token = $capability->generateToken();
 		/* ********************************************************************
 		 * connect to the nodejs socket.io
 		 */
-		var socket = io.connect('https://verbery-queue-for-twilio-node.herokuapp.com');
+		var socket = io.connect('https://<?php echo getenv('SOCKETIO_HOST'); ?>');
 
 
 
