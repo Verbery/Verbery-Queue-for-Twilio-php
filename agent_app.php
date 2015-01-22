@@ -1,5 +1,7 @@
 <?php 
 
+header('Access-Control-Allow-Origin: *');
+
 /*
  * SETUP environment vars application in Heroku
  * heroku config:set SID=Azzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
