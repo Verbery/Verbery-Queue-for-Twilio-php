@@ -24,7 +24,7 @@ require('vendor/autoload.php');
 $client = new Client(new Version1X('http://verbery-queue-for-twilio-node.herokuapp.com'));
 
 $client->initialize();
-$client->emit('from master, new call in queue', $name);
+$client->emit('from master, new call in queue', [$name]);
 $client->close();
 
 // $elephant->init();
