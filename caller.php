@@ -71,7 +71,7 @@ $client->close();
 
 ### Twilio HowTo implementation of enqueue
 # Include Twilio PHP helper library.
-require('libs/Services/Twilio.php');
+// require('libs/Services/Twilio.php');
 
 # Tell Twilio to expect some XML
 header('Content-type: text/xml');
