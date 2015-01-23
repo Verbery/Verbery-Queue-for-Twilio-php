@@ -14,12 +14,9 @@
 
 require('vendor/autoload.php');
 
-// put your Twilio API credentials here
-$accountSid = getenv('TWILIO_SID');
-$authToken  = getenv('TWILIO_TOKEN');
-
-// put your Twilio Application Sid here
-$appSid	 = getenv('TWILIO_APPSID');
+$accountSid	= getenv('TWILIO_SID');
+$authToken	= getenv('TWILIO_TOKEN');
+$appSid			= getenv('TWILIO_APPSID');
 
 // get agent id from the address line
 if(isset($_GET['agent'])) {
@@ -47,7 +44,6 @@ $token = $capability->generateToken();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Verbery Agent</title>
 
-<!-- 	<link rel="stylesheet" href="css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/agent_app.css">
 
@@ -67,16 +63,10 @@ $token = $capability->generateToken();
 		var agent_id = '<?php echo $agent_id; ?>';// const variable that stores php variable agent_id
 
 
-
-
-
 		/* ********************************************************************
 		 * connect to the nodejs socket.io
 		 */
 		var socket = io.connect('https://<?php echo getenv('SOCKETIO_HOST'); ?>');
-
-
-
 
 
 		/* ********************************************************************
@@ -86,14 +76,14 @@ $token = $capability->generateToken();
 		Twilio.Device.setup(token);
 		 
 		Twilio.Device.ready(function (device) {
-			$("#log").append("\nTwilio.Device.ready(): Twilio.Device.status = '"+ Twilio.Device.status() +"'");
+			$("#log").append("Twilio.Device.ready(): Twilio.Device.status = '"+ Twilio.Device.status() +"'\n");
 			isOnline = true;
 			$("#nav-btn-state").text(Twilio.Device.status());
 			$("#nav-btn-status").html('Online');
 		});
 
 		Twilio.Device.offline(function (device) {
-			$("#log").append("\nTwilio.Device.offline(): Twilio.Device.status = '"+ Twilio.Device.status() +"'");
+			$("#log").append("Twilio.Device.offline(): Twilio.Device.status = '"+ Twilio.Device.status() +"'\n");
 			isOnline = false;
 			$("#nav-btn-state").text(Twilio.Device.status());
 		});
@@ -103,20 +93,20 @@ $token = $capability->generateToken();
 // 		});
 
 		Twilio.Device.error(function (error) {
-			$("#log").append("\nError: " + error.message);
+			$("#log").append("Error: " + error.message + "\n");
 			console.log(error.message);
 			isOnline = false;
 			$("#nav-btn-state").text(Twilio.Device.status());
 		});
 		 
 		Twilio.Device.connect(function (conn) {
-			$("#log").append("\nSuccessfully established call");
+			$("#log").append("Successfully established call\n");
 			connection = conn;
 			$("#nav-btn-state").text(Twilio.Device.status());
 		});
 		 
 		Twilio.Device.disconnect(function (conn) {
-			$("#log").append("\nCall ended");
+			$("#log").append("Call ended\n");
 			$("#nav-btn-state").text(Twilio.Device.status());
 			// register as an agent in ready state
 			socket.emit('register', agent_id);
@@ -130,14 +120,14 @@ $token = $capability->generateToken();
 
 				Twilio.Device.sounds.incoming( true );
 
-				$("#log").append("\nIncoming connection from " + conn.parameters.From);
+				$("#log").append("Incoming connection from " + conn.parameters.From + "\n");
 				// accept the incoming connection and start two-way audio
 				conn.accept();
 				// enable accept call button
 				$("#nav-btn-accept").removeClass('disabled');
 			} else {
 				conn.reject();
-				$("#log").append("\nIncoming call has been rejected");
+				$("#log").append("Incoming call has been rejected\n");
 			}
 			$("#nav-btn-state").text(Twilio.Device.status());
 		});
@@ -182,16 +172,17 @@ $token = $capability->generateToken();
 			// get the call type: either 'direct' or 'queue'
 			type = $("#calltype").val();
 
-			$("#log").append("\nagent accepted "+ type +" call");
-			$("#log").append("\nagent has been deregistered - not able to accept calls");
+			$("#log").append("agent accepted "+ type +" call\n");
+			$("#log").append("agent has been deregistered - not able to accept calls\n");
 			
 			// accept call if it's a direct call to agent
+			// (not related to queue calls functionality)
 			if(type == 'direct') {
 
 				/*
 				 * OpenVBX requires to send digit 1 to accept call 
 				 * so if you'd like to integrate it with OpenVBX, uncomment the following
-				 * for direct call connection (not related to queue calls functionality)
+				 * for direct call connection
 				 */
 				// connection.sendDigits("1");
 
@@ -201,11 +192,10 @@ $token = $capability->generateToken();
 				// get Twilio queue name, unique identifier
 				var qid = $("#queueid").val();
 
-				$("#log").append("\ntrying to put agent into the queue '" + qid + "'");
+				$("#log").append("trying to put agent into the queue '" + qid + "'\n");
 
 				// connect agent's softphone to the queue qid
 				Twilio.Device.connect({
-					// agent_calling_queue: true,
 					queueId: qid
 				});
 			}
@@ -245,7 +235,7 @@ $token = $capability->generateToken();
 				$("#nav-btn-accept").toggleClass('flashing');
 
 				// if agent haven't accepted the call: haven't pressed 'accept call' button
-				// within 30 seconds
+				// within repetitions*2 seconds
 				if (++curr_repeitions >= repetitions) {
 	
 					// stop ringing/flashing
@@ -265,9 +255,6 @@ $token = $capability->generateToken();
 				}
 			}, 500);
 		}
-
-
-
 
 
 		/* ********************************************************************

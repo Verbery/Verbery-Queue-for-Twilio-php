@@ -7,7 +7,7 @@ body {
 
 #log {
   width: 534px;
-  height: 25px;
+  min-height: 100px;
   background: #404040;
   padding: 10px;
   /*margin-left: -243px;*/
