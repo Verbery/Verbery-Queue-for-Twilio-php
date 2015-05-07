@@ -299,7 +299,7 @@ $token = $capability->generateToken();
 			<div class="panel-title">Agent #<?php echo $agent_id; ?></div>
 		</div>
 		<div class="panel-body">
-			<p>Phone number: (925) 308-5333</p>
+			<p>Phone number: (925) 350-8087</p>
 			<p>Default workflow: </p>
 			<ul>
 				<li>Open 2-3 browser windows with the same <a href="https://twilio-queue-php.herokuapp.com/">app / url</a>. You'll be logged in as several agents - notice different agent #?</li>
