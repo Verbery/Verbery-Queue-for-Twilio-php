@@ -1,4 +1,7 @@
 <?php 
+// require_once('libs/Services/Twilio/Capability.php');
+
+require('vendor/autoload.php');
 
 /*
  * SETUP environment vars for application in Heroku
@@ -12,8 +15,7 @@
  * heroku config:set SOCKETIO_HOST=my-queue-node.herokuapp.com
  */
 
-require('vendor/autoload.php');
-
+// Your Account Sid and Auth Token from twilio.com/user/account
 $accountSid	= getenv('TWILIO_SID');
 $authToken	= getenv('TWILIO_TOKEN');
 $appSid			= getenv('TWILIO_APPSID');
@@ -42,10 +44,12 @@ $token = $capability->generateToken();
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Verbery Agent</title>
+	<title>Call Queue Management app</title>
 
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/agent_app.css">
+	<link rel="stylesheet" href="css/app.css">
 
 	<script type="text/javascript" src="https://static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
 
@@ -290,22 +294,53 @@ $token = $capability->generateToken();
 
 
 <body>
-<!--
-	<h3 class="panel-title">Agent #<?php echo $agent_id; ?></h3>
--->
-	<div id="statuses">
-		<button id="nav-btn-status" class="btn" onclick="toggleDeviceStatus();">Status</button>
-		<button id="nav-btn-state"  class="btn disabled">| | |</button>
+	<div class="panel panel-warning abs-left-top">
+		<div class="panel-heading">
+			<div class="panel-title">Agent #<?php echo $agent_id; ?></div>
+		</div>
+		<div class="panel-body">
+			<p>Phone number: (925) 308-5333</p>
+			<p>Default workflow: </p>
+			<ul>
+				<li>Open 2-3 browser windows with the same <a href="https://twilio-queue-php.herokuapp.com/">app / url</a>. You'll be logged in as several agents - notice different agent #?</li>
+				<li>Make a call to the above number. It will be connected to one of the agent applications you opened on the previous step. Click "Accept call" and talk, don't hangup!</li>
+				<li>Dial the same number from your office or home phone. You will be placed into the queue to wait for the next available agent. Once you finish with your first call, agent will automatically receive the 2nd call.</li>
+			</ul>
+		</div>
 	</div>
-	<div id="buttons">
-		<button id="nav-btn-accept" class="btn" onclick="acceptCall();"><i class="fa fa-phone-square"></i> Accept</button>
-		<button id="nav-btn-hangup" class="btn" onclick="hangup();"><i class="fa fa-ban"></i> Hang up</button>
-		<input type='hidden' id='calltype' value='direct' />
-		<input type='hidden' id='queueid' value='' />
-	</div>
-	<div id="log"></div>
 
-	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<div class="container">
+		<div id="statuses">
+			<button id="nav-btn-status" class="btn" onclick="toggleDeviceStatus();">Status</button>
+			<button id="nav-btn-state"  class="btn disabled">| | |</button>
+		</div>
+		<div class="row margin-top-300">
+			<div class="col-md-3 col-sm-1"></div>
+			<div class="col-md-6 col-sm-10">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<button id="nav-btn-accept" class="btn" onclick="acceptCall();"><i class="fa fa-phone-square"></i> Accept</button>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<button id="nav-btn-hangup" class="btn" onclick="hangup();"><i class="fa fa-ban"></i> Hang up</button>
+						<input type='hidden' id='calltype' value='direct' />
+						<input type='hidden' id='queueid' value='' />
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-1"></div>
+		</div>
+		<div class="row margin-top-25">
+			<div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+				<div id="log"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- 	<script type="text/javascript" src="js/jquery.titlealert.min.js"></script> -->
+	<!-- Latest compiled and minified JavaScript -->
+<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
 
 </body>
 </html>

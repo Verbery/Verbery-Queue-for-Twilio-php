@@ -1,17 +1,33 @@
-/* *** Twilio *** */
 body {
   text-align: center;
   margin: 0;
-  background: url(../../img/logo.png) top center no-repeat, url(../../img/whitey.png) center top repeat;
+  background: url(/img/whitey.png) center top repeat;
+}
+
+.abs-left-top {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 300px;
+	min-height: 200px;
+	max-height: 250px;
+}
+.abs-left-top .panel-body {
+	text-align: left;
+	height: 205px;
+	overflow-y: scroll;
+}
+
+.abs-left-top ul {
+	padding-left: 20px;
 }
 
 #log {
-  width: 534px;
+  width: 100%;
   min-height: 100px;
   background: #404040;
   padding: 10px;
-  /*margin-left: -243px;*/
-  margin: 25px auto 0 auto;
+  margin: 0 auto;
   border: 1px solid #d4d4d4;
   text-decoration: none;
   font:18px/normal sans-serif;
@@ -39,9 +55,13 @@ body {
 	white-space: pre;
 }
 
-#buttons {
+.margin-top-25 {
+	margin-top: 25px;
+}
+.margin-top-300 {
 	margin: 300px 0 0 0;
 }
+
 #statuses {
 	position: absolute;
 	top: 10px;
@@ -95,7 +115,7 @@ button.btn  {
 }
 
 button.btn:hover,
-button.btn:focus,
+/* button.btn:focus, */
 button.btn:active,
 button.btn.active,
 button.flashing {
@@ -128,19 +148,6 @@ button.btn::-moz-focus-inner {
     border: 0;
 }
 
-input {
-  display: block;
-  margin: 25px auto 0 auto;
-  outline: none;
-  border: 1px solid #999;
-  line-height: 1.4em;
-  font-size: 24px;
-  padding: 10px;
-  width: 466px;
-}
-
-/* ............................................................................................................. Icons */
-
 button.btn:before {
     content: "";
     position: relative;
@@ -148,6 +155,4 @@ button.btn:before {
     float:left;
 }
 
-#nav-btn-hangup {
-   margin-left: 25px;
-}
+/* ............................................................................................................. Icons */
