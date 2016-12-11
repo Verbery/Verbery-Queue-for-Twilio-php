@@ -3,6 +3,8 @@
 
 require('vendor/autoload.php');
 
+use Twilio\Jwt\ClientToken;
+
 /*
  * SETUP environment vars for application in Heroku
  *
@@ -18,7 +20,7 @@ require('vendor/autoload.php');
 // Your Account Sid and Auth Token from twilio.com/user/account
 $accountSid	= getenv('TWILIO_SID');
 $authToken	= getenv('TWILIO_TOKEN');
-$appSid			= getenv('TWILIO_APPSID');
+$appSid		= getenv('TWILIO_APPSID');
 
 // get agent id from the address line
 if(isset($_GET['agent'])) {
@@ -28,7 +30,7 @@ if(isset($_GET['agent'])) {
 	$agent_id = rand(1,1000);
 }
 
-$capability = new Services_Twilio_Capability($accountSid, $authToken);
+$capability = new ClientToken($accountSid, $authToken);
 $capability->allowClientOutgoing($appSid);
 $capability->allowClientIncoming($agent_id);
 $token = $capability->generateToken();

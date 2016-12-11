@@ -50,8 +50,7 @@ body {
   /* IE hacks */
   zoom: 1;
   *display: inline;
-  overflow-x: hidden;
-	overflow-y: scroll;
+  overflow: hidden;
 	white-space: pre;
 }
 

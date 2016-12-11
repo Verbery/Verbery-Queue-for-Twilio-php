@@ -1,6 +1,6 @@
 {
     "require": {
-			"twilio/sdk": ">=3.9",
+			"twilio/sdk": ">=5.0",
 			"wisembly/elephant.io": "~3.0"
     }
 }

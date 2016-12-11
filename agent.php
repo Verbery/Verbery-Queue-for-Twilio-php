@@ -8,13 +8,15 @@
 $name = $_POST['queueId'];
 
 # Include Twilio PHP helper library.
-require('vendor/twilio/sdk/Services/Twilio.php');
+require('vendor/autoload.php');
+
+use Twilio\Twiml;
 
 # Tell Twilio to expect some XML
 header('Content-type: text/xml');
 
 # Create response object.
-$response = new Services_Twilio_Twiml();
+$response = new Twiml;
 
 # Say something before connecting agent to Customer in the Twilio queue
 $response->say("queue: " . $name . ", connecting to Customer");

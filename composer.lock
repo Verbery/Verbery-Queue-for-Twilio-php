@@ -1,29 +1,38 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ec99ad929fe52a3d7defd391a05aac90",
+    "hash": "3f1618682fad42fd623bec9f300a8099",
+    "content-hash": "077843940ef22e2b664333054a9eada7",
     "packages": [
         {
             "name": "psr/log",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
+            "require": {
+                "php": ">=5.3.0"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Psr\\Log\\": ""
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -37,38 +46,39 @@
                 }
             ],
             "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
             "keywords": [
                 "log",
                 "psr",
                 "psr-3"
             ],
-            "time": "2012-12-21 11:40:51"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "twilio/sdk",
-            "version": "3.12.8",
+            "version": "5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "9d8bb7dad58dc52fc4cbc1f0e905950ad839ca73"
+                "reference": "354b5859cc7386642b8842a8b9e3dee01e957235"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/9d8bb7dad58dc52fc4cbc1f0e905950ad839ca73",
-                "reference": "9d8bb7dad58dc52fc4cbc1f0e905950ad839ca73",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/354b5859cc7386642b8842a8b9e3dee01e957235",
+                "reference": "354b5859cc7386642b8842a8b9e3dee01e957235",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.1"
+                "php": ">=5.3.0"
             },
             "require-dev": {
-                "mockery/mockery": ">=0.7.2",
-                "phpunit/phpunit": "3.7.*"
+                "apigen/apigen": "^4.1",
+                "phpunit/phpunit": "4.5.*"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Services_Twilio": ""
+                "psr-4": {
+                    "Twilio\\": "Twilio/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -77,12 +87,8 @@
             ],
             "authors": [
                 {
-                    "name": "Kevin Burke",
-                    "email": "kevin@twilio.com"
-                },
-                {
-                    "name": "Kyle Conroy",
-                    "email": "kyle+pear@twilio.com"
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
                 }
             ],
             "description": "A PHP wrapper for Twilio's API",
@@ -92,20 +98,20 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2014-12-04 19:17:59"
+            "time": "2016-10-12 17:28:31"
         },
         {
             "name": "wisembly/elephant.io",
-            "version": "v3.0.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wisembly/elephant.io.git",
-                "reference": "61f7eb8dcc2ac939aad526745c8042ce1cd4a54d"
+                "reference": "e08dfbf261b759e76ebe403aeed0e4a50b613c7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wisembly/elephant.io/zipball/61f7eb8dcc2ac939aad526745c8042ce1cd4a54d",
-                "reference": "61f7eb8dcc2ac939aad526745c8042ce1cd4a54d",
+                "url": "https://api.github.com/repos/Wisembly/elephant.io/zipball/e08dfbf261b759e76ebe403aeed0e4a50b613c7e",
+                "reference": "e08dfbf261b759e76ebe403aeed0e4a50b613c7e",
                 "shasum": ""
             },
             "require": {
@@ -158,7 +164,7 @@
                 "real time",
                 "websocket"
             ],
-            "time": "2014-09-08 10:52:10"
+            "time": "2016-10-25 07:52:01"
         }
     ],
     "packages-dev": [],

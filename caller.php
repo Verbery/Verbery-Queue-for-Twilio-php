@@ -11,6 +11,7 @@ use ElephantIO\Client
 	, ElephantIO\Engine\SocketIO\Version1X;
 
 require ('vendor/autoload.php');
+use Twilio\Twiml;
 
 /*
  * notify nodejs Queue Manager about the incoming call in the queue so the agent
@@ -32,7 +33,7 @@ $client->close();
 header ( 'Content-type: text/xml' );
 
 // Create response object.
-$response = new Services_Twilio_Twiml ();
+$response = new Twiml;
 
 // Place incoming caller in a Queue
 $response->enqueue ( $name );
